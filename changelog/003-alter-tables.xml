@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <!-- Alter tables and add new features -->
+    <changeSet id="003-1" author="suraj">
+        <addColumn tableName="EMPLOYEE">
+            <column name="PHONE_NUMBER" type="VARCHAR(20)"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="003-2" author="suraj">
+        <addColumn tableName="DEPARTMENT">
+            <column name="BUDGET" type="DECIMAL(15,2)" defaultValue="0.00"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="003-3" author="suraj">
+        <update tableName="DEPARTMENT">
+            <column name="BUDGET" value="100000.00"/>
+            <where>DEPT_NAME='Engineering'</where>
+        </update>
+        
+        <update tableName="DEPARTMENT">
+            <column name="BUDGET" value="50000.00"/>
+            <where>DEPT_NAME='Marketing'</where>
+        </update>
+        
+        <update tableName="DEPARTMENT">
+            <column name="BUDGET" value="75000.00"/>
+            <where>DEPT_NAME='Sales'</where>
+        </update>
+    </changeSet>
+
+    <changeSet id="003-4" author="suraj">
+        <createTable tableName="PROJECT">
+            <column name="ID" type="INT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="PROJECT_NAME" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DEPARTMENT_ID" type="INT">
+                <constraints nullable="false" foreignKeyName="fk_project_dept" 
+                            references="DEPARTMENT(ID)"/>
+            </column>
+            <column name="START_DATE" type="DATE"/>
+            <column name="END_DATE" type="DATE"/>
+            <column name="BUDGET" type="DECIMAL(15,2)"/>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <!-- Insert initial data -->
+    <changeSet id="002-1" author="suraj">
+        <insert tableName="DEPARTMENT">
+            <column name="DEPT_NAME" value="Engineering"/>
+            <column name="LOCATION" value="New York"/>
+        </insert>
+        <insert tableName="DEPARTMENT">
+            <column name="DEPT_NAME" value="Marketing"/>
+            <column name="LOCATION" value="Chicago"/>
+        </insert>
+        <insert tableName="DEPARTMENT">
+            <column name="DEPT_NAME" value="Sales"/>
+            <column name="LOCATION" value="Boston"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="002-2" author="suraj">
+        <insert tableName="EMPLOYEE">
+            <column name="FIRST_NAME" value="John"/>
+            <column name="LAST_NAME" value="Doe"/>
+            <column name="EMAIL" value="john.doe@company.com"/>
+            <column name="DEPARTMENT_ID" value="1"/>
+            <column name="SALARY" value="75000.00"/>
+            <column name="HIRE_DATE" value="2024-01-15"/>
+        </insert>
+        
+        <insert tableName="EMPLOYEE">
+            <column name="FIRST_NAME" value="Jane"/>
+            <column name="LAST_NAME" value="Smith"/>
+            <column name="EMAIL" value="jane.smith@company.com"/>
+            <column name="DEPARTMENT_ID" value="2"/>
+            <column name="SALARY" value="65000.00"/>
+            <column name="HIRE_DATE" value="2024-02-20"/>
+        </insert>
+        
+        <insert tableName="EMPLOYEE">
+            <column name="FIRST_NAME" value="Mike"/>
+            <column name="LAST_NAME" value="Johnson"/>
+            <column name="EMAIL" value="mike.johnson@company.com"/>
+            <column name="DEPARTMENT_ID" value="1"/>
+            <column name="SALARY" value="80000.00"/>
+            <column name="HIRE_DATE" value="2024-03-10"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>
